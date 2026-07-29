@@ -1,0 +1,29 @@
+# Virtual Environment
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# macOS
+.DS_Store
+
+# Environment Variables
+.env
+
+# Database Files
+*.db
+*.sqlite3
+
+# Vector Database
+*.faiss
+
+# Logs
+*.log
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/

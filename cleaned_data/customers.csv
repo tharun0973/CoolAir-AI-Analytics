@@ -1,0 +1,33 @@
+customer_id,first_name,last_name,address,city,state,zip,phone,email,customer_since,is_placeholder
+1001,Marcus,Whitfield,214 Bluebonnet Ln,Austin,TX,78745,512-555-0142,marcus.whitfield@example.com,2018-04-11,0
+1002,Sandra,Ochoa,88 Palomino Trail,Round Rock,TX,78664,512-555-0198,sandra.ochoa@example.com,2019-03-22,0
+1003,Deepak,Mehra,1290 Riverside Dr,Austin,TX,78704,,deepak.mehra@example.com,2017-11-02,0
+1004,Latoya,Simmons,44 Cattlemans Rd,Pflugerville,TX,78660,512-555-0177,,2020-07-19,0
+1005,Wei,Chen,720 Sunset Valley Blvd,Austin,TX,78745,512-555-0210,wei.chen@example.com,2016-01-30,0
+1006,Robert,Fenwick,15 Comal Ct,Cedar Park,TX,78613,512-555-0233,rfenwick@example.com,2015-06-18,0
+1007,Priya,Natarajan,930 Windridge Ave,Austin,TX,78731,512-555-0119,priya.n@example.com,2021-08-09,0
+1008,Hector,Alvarado,367 Barton Springs Rd,Austin,TX,78704,512-555-0165,hector.alvarado@example.com,2019-09-25,0
+1009,Emily,Sørensen,52 Lakeline Blvd,Cedar Park,TX,78613,,emily.sorensen@example.com,2020-02-14,0
+1010,Jamal,Whitaker,801 Manchaca Rd,Austin,TX,78745,512-555-0184,jamal.whitaker@example.com,2014-12-01,0
+1011,Grace,Kowalski,19 Slaughter Ln,Austin,TX,78748,512-555-0256,grace.kowalski@example.com,2022-05-17,0
+1012,Aiden,O'Malley,477 Rundberg Ln,Austin,TX,78753,512-555-0143,aiden.omalley@example.com,2013-03-09,0
+1013,Fatima,Siddiqui,63 Braker Ln,Austin,TX,78758,512-555-0187,fatima.s@example.com,2021-10-04,0
+1014,Connor,Blackwood,912 Anderson Mill Rd,Austin,TX,78729,,connor.blackwood@example.com,2018-01-22,0
+1015,Rob,Fenwick,15 Comal Ct,Cedar Park,TX,78613,512-555-0233,r.fenwick@example.com,2015-06-20,0
+1016,Nadia,Petrov,301 Duval St,Austin,TX,78751,512-555-0221,nadia.petrov@example.com,2019-05-13,0
+1017,Samuel,Owusu,145 Pleasant Valley Rd,Austin,TX,78741,512-555-0299,samuel.owusu@example.com,2016-04-02,0
+1018,Isabella,Marchetti,68 Guadalupe St,Austin,TX,78705,512-555-0128,isabella.m@example.com,2022-08-30,0
+1019,Tyler,Brandt,510 Parmer Ln,Austin,TX,78727,512-555-0176,,2017-02-27,0
+1020,Chidinma,Eze,29 Metric Blvd,Austin,TX,78758,512-555-0244,chidinma.eze@example.com,2020-11-11,0
+1021,Olivia,Kessler,880 Congress Ave,Austin,TX,78701,512-555-0155,olivia.kessler@example.com,2015-09-16,0
+1022,Brandon,McAllister,177 Wells Branch Pkwy,Austin,TX,78728,512-555-0193,brandon.mac@example.com,2019-06-11,0
+1023,Ingrid,Halvorsen,633 Spicewood Springs Rd,Austin,TX,78759,512-555-0207,ingrid.h@example.com,2020-12-05,0
+1024,Malik,Freeman,22 Menchaca Rd,Austin,TX,78748,,malik.freeman@example.com,2018-07-19,0
+1025,Yuki,Tanaka,309 Airport Blvd,Austin,TX,78702,512-555-0264,yuki.tanaka@example.com,2023-01-25,0
+1026,Colleen,Fitzgerald,71 Steck Ave,Austin,TX,78757,512-555-0138,colleen.f@example.com,2016-10-22,0
+1027,Andres,Villareal,406 Oltorf St,Austin,TX,78704,512-555-0281,andres.v@example.com,2021-03-08,0
+1028,Beatrice,Nakamura,55 Research Blvd,Austin,TX,78759,,beatrice.n@example.com,2019-02-14,0
+1029,Trevor,Lindqvist,918 Ben White Blvd,Austin,TX,78745,512-555-0227,trevor.l@example.com,2022-06-01,0
+1030,Simone,Duval,240 East 6th St,Austin,TX,78701,512-555-0162,simone.duval@example.com,2017-09-19,0
+9998,Unknown,Placeholder,,,,,,,,1
+9999,Unknown,Placeholder,,,,,,,,1

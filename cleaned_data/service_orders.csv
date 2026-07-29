@@ -1,0 +1,36 @@
+order_id,customer_id,order_date,service_type,technician_id,total_amount,status
+5001,1001,2024-01-14,AC Repair,201,189.5,Completed
+5002,1002,2024-01-16,Furnace Tune-up,202,129.0,Completed
+5003,1003,2024-01-18,Duct Cleaning,203,245.75,Completed
+5004,1005,2024-01-19,AC Install,201,3450.0,Completed
+5005,1006,2024-01-22,Thermostat Repair,204,89.99,Completed
+5006,1007,2024-01-25,AC Repair,202,199.25,Completed
+5007,9998,2024-01-28,Furnace Repair,203,310.0,Completed
+5008,1010,2024-02-02,Emergency Repair,201,425.5,Completed
+5009,1011,2024-02-05,Duct Cleaning,204,255.0,Completed
+5010,1012,2024-02-08,AC Repair,202,178.25,Completed
+5011,1013,2024-02-10,Maintenance Plan Visit,203,0.0,Completed
+5012,1014,2024-02-14,AC Repair,201,215.6,Completed
+5013,9999,2024-02-17,Furnace Tune-up,204,135.0,Completed
+5014,1017,2024-02-20,AC Install,202,3120.0,Completed
+5015,1018,2024-02-24,Thermostat Repair,203,95.0,Completed
+5016,1020,2024-02-26,Emergency Repair,201,510.75,Completed
+5017,1021,2024-03-01,Duct Cleaning,204,265.0,Completed
+5018,1022,2024-03-04,AC Repair,202,182.4,Completed
+5019,1023,2024-03-07,Furnace Repair,203,298.5,Completed
+5020,1024,2024-03-11,AC Repair,201,205.0,Completed
+5021,1006,2024-03-14,Maintenance Plan Visit,204,0.0,Completed
+5022,1015,2024-03-17,AC Repair,202,192.75,Completed
+5023,1027,2024-03-20,Duct Cleaning,203,248.0,Completed
+5024,1028,2024-03-24,AC Install,201,3675.5,Completed
+5025,1029,2024-03-27,Thermostat Repair,204,88.25,Completed
+5026,1030,2024-03-30,AC Repair,202,175.9,Cancelled
+5027,1001,2024-04-02,Furnace Repair,203,312.6,Completed
+5028,1004,2024-04-05,Emergency Repair,201,455.0,Completed
+5029,1009,2024-04-09,AC Repair,204,199.99,Completed
+5030,1016,2024-04-12,Duct Cleaning,202,260.5,Completed
+5031,9998,2024-04-15,AC Repair,201,215.0,Completed
+5032,1019,2024-04-18,Maintenance Plan Visit,203,0.0,Completed
+5033,1025,2024-04-22,AC Install,201,3298.75,Completed
+5034,1026,2024-04-25,Thermostat Repair,204,92.5,Completed
+5035,1002,2024-04-29,AC Repair,202,188.6,Completed

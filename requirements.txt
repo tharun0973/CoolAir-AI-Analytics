@@ -1,0 +1,15 @@
+pandas
+numpy
+SQLAlchemy
+python-dotenv
+python-docx
+docx2txt
+pdfplumber
+sentence-transformers
+faiss-cpu
+scikit-learn
+langchain
+langchain-community
+sqlglot
+chainlit
+tabulate

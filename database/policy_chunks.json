@@ -1,0 +1,94 @@
+{
+  "chunks": [
+    "CoolAir Comfort Services\nService Pricing & Policy Handbook (Version 1.0)\nEffective Date: January 15, 2025 Document Owner: Operations Department\nSection 1 \u2014 Purpose\nThis handbook defines standard pricing, warranty terms, and service policies for all residential HVAC service calls performed by CoolAir Comfort Services technicians. Section 2 \u2014 Standard Service Call Fees\nStandard diagnostic visit (weekday, 8am\u20136pm): $89.00\nDiagnostic fee is waived if the customer proceeds with the recommended repair. Return visit within 30 days for the same issue: no additional diagnostic fee.",
+    "he recommended repair. Return visit within 30 days for the same issue: no additional diagnostic fee. Section 3 \u2014 Warranty Terms\nSection 3.2 \u2014 Parts Warranty All replacement parts installed by CoolAir technicians carry a standard 12-month parts warranty from the date of installation, covering manufacturer defects. Labor associated with a warranty claim is covered for 90 days from the original service date.",
+    "fects. Labor associated with a warranty claim is covered for 90 days from the original service date. Section 4 \u2014 After-Hours & Emergency Service\nSection 4.1 \u2014 Emergency Surcharge Service requests outside of standard business hours (before 8am, after 6pm, weekends, and holidays) are billed at a 1.5x surcharge on standard labor rates. The diagnostic fee for emergency visits is $89.00, consistent with standard hours. Section 5 \u2014 Cancellation Policy\nAppointments cancelled with less than 4 hours\u2019 notice may be subject to a $35 trip fee at the discretion of the dispatch supervisor.",
+    "than 4 hours\u2019 notice may be subject to a $35 trip fee at the discretion of the dispatch supervisor. Section 6 \u2014 Payment Terms\nPayment is due at time of service unless the customer has an approved commercial financing plan on file. Accepted payment methods: credit card, debit card, check, and cash.",
+    "CoolAir Comfort Services\nPricing Addendum (Version 2.0)\nEffective Date: June 1, 2025 Document Owner: Operations Department Applies to: Service Pricing & Policy Handbook (Version 1.0, January 15, 2025)\nNotice\nThis addendum supersedes Section 3.2 (Parts Warranty) and Section 4.1 (Emergency Surcharge \u2014 diagnostic fee only) of the Service Pricing & Policy Handbook, Version 1.0. All other sections of the Version 1.0 handbook remain in full effect. This addendum takes precedence over Version 1.0 wherever the two documents conflict.",
+    "in full effect. This addendum takes precedence over Version 1.0 wherever the two documents conflict. Updated Section 3.2 \u2014 Parts Warranty\nEffective for all installations on or after June 1, 2025, the standard parts warranty is extended from 12 months to 18 months on compressor and condenser parts only. All other replacement parts remain under the original 12-month warranty as stated in Version 1.0. Updated Section 4.1 \u2014 Emergency Diagnostic Fee\nEffective June 1, 2025, the diagnostic fee for after-hours and emergency service visits increases from $89.00 to $129.00.",
+    "5, the diagnostic fee for after-hours and emergency service visits increases from $89.00 to $129.00. The standard weekday diagnostic fee ($89.00) and the 1.5x labor surcharge are unchanged. Reason for Update\nRising fuel and dispatch costs for after-hours technician callouts, and increased manufacturer part costs for compressor/condenser units.",
+    "CoolAir Comfort Services\nCustomer Service Standard Operating Procedure\nEffective Date: March 1, 2024 Document Owner: Customer Experience Team\n1. Call Handling\nAll inbound service requests must be logged in the dispatch system within 5 minutes of the call ending. Customers should receive a confirmation text message with their appointment window within 15 minutes. 2. Escalation Path\nTier 1: Front-desk dispatcher handles scheduling, rescheduling, and general pricing questions. Tier 2: Customer Experience Lead handles billing disputes, refund requests, and warranty claim disputes.",
+    "2: Customer Experience Lead handles billing disputes, refund requests, and warranty claim disputes. Tier 3: Operations Manager handles complaints involving property damage or safety concerns. Must be looped in within 1 business hour. 3. Refund Policy\nRefunds for disputed charges are processed within 7\u201310 business days once approved by the Customer Experience Lead. Refunds are issued to the original payment method. Cash payments are refunded via company check. 4.",
+    "Refunds are issued to the original payment method. Cash payments are refunded via company check. 4. Maintenance Plan Customers\nCustomers enrolled in the Annual Maintenance Plan receive two complimentary tune-up visits per year (spring and fall). These visits are logged as service orders with a $0.00 total_amount and should not be counted as revenue-generating jobs in performance reporting. 5. Data Handling\nCustomer contact information and service history are considered internal business records.",
+    "Handling\nCustomer contact information and service history are considered internal business records. Do not share customer lists, contact details, or service history with third parties without written authorization from the Operations Manager."
+  ],
+  "metadata": [
+    {
+      "source": "Service_Pricing_and_Policy_Handbook_v1.docx",
+      "chunk_index": 0,
+      "version": "v1",
+      "effective_date": "2025-01-15",
+      "priority": 1
+    },
+    {
+      "source": "Service_Pricing_and_Policy_Handbook_v1.docx",
+      "chunk_index": 1,
+      "version": "v1",
+      "effective_date": "2025-01-15",
+      "priority": 1
+    },
+    {
+      "source": "Service_Pricing_and_Policy_Handbook_v1.docx",
+      "chunk_index": 2,
+      "version": "v1",
+      "effective_date": "2025-01-15",
+      "priority": 1
+    },
+    {
+      "source": "Service_Pricing_and_Policy_Handbook_v1.docx",
+      "chunk_index": 3,
+      "version": "v1",
+      "effective_date": "2025-01-15",
+      "priority": 1
+    },
+    {
+      "source": "Pricing_Addendum_v2.docx",
+      "chunk_index": 0,
+      "version": "v2",
+      "effective_date": "2025-06-01",
+      "priority": 2
+    },
+    {
+      "source": "Pricing_Addendum_v2.docx",
+      "chunk_index": 1,
+      "version": "v2",
+      "effective_date": "2025-06-01",
+      "priority": 2
+    },
+    {
+      "source": "Pricing_Addendum_v2.docx",
+      "chunk_index": 2,
+      "version": "v2",
+      "effective_date": "2025-06-01",
+      "priority": 2
+    },
+    {
+      "source": "Customer_Service_SOP.docx",
+      "chunk_index": 0,
+      "version": "sop",
+      "effective_date": "2024-03-01",
+      "priority": 1
+    },
+    {
+      "source": "Customer_Service_SOP.docx",
+      "chunk_index": 1,
+      "version": "sop",
+      "effective_date": "2024-03-01",
+      "priority": 1
+    },
+    {
+      "source": "Customer_Service_SOP.docx",
+      "chunk_index": 2,
+      "version": "sop",
+      "effective_date": "2024-03-01",
+      "priority": 1
+    },
+    {
+      "source": "Customer_Service_SOP.docx",
+      "chunk_index": 3,
+      "version": "sop",
+      "effective_date": "2024-03-01",
+      "priority": 1
+    }
+  ]
+}

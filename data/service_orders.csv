@@ -1,0 +1,36 @@
+order_id,customer_id,order_date,service_type,technician_id,total_amount,status
+5001,1001,2024-01-14,AC Repair,201,189.50,Completed
+5002,1002,01/16/2024,Furnace Tune-up,202,129.00,Completed
+5003,1003,2024-01-18,Duct Cleaning,203,245.75,Completed
+5004,1005,19-Jan-2024,AC Install,201,3450.00,Completed
+5005,1006,2024-01-22,Thermostat Repair,204,89.99,Completed
+5006,1007,01/25/2024,AC Repair,202,199.25,Completed
+5007,9998,2024-01-28,Furnace Repair,203,310.00,Completed
+5008,1010,2024-02-02,Emergency Repair,201,425.50,Completed
+5009,1011,02/05/2024,Duct Cleaning,204,255.00,Completed
+5010,1012,2024-02-08,AC Repair,202,178.25,Completed
+5011,1013,10-Feb-2024,Maintenance Plan Visit,203,0.00,Completed
+5012,1014,2024-02-14,AC Repair,201,215.60,Completed
+5013,9999,2024-02-17,Furnace Tune-up,204,135.00,Completed
+5014,1017,02/20/2024,AC Install,202,3120.00,Completed
+5015,1018,2024-02-24,Thermostat Repair,203,95.00,Completed
+5016,1020,26-Feb-2024,Emergency Repair,201,510.75,Completed
+5017,1021,2024-03-01,Duct Cleaning,204,265.00,Completed
+5018,1022,03/04/2024,AC Repair,202,182.40,Completed
+5019,1023,2024-03-07,Furnace Repair,203,298.50,Completed
+5020,1024,2024-03-11,AC Repair,201,205.00,Completed
+5021,1006,14-Mar-2024,Maintenance Plan Visit,204,0.00,Completed
+5022,1015,2024-03-17,AC Repair,202,192.75,Completed
+5023,1027,03/20/2024,Duct Cleaning,203,248.00,Completed
+5024,1028,2024-03-24,AC Install,201,3675.50,Completed
+5025,1029,2024-03-27,Thermostat Repair,204,88.25,Completed
+5026,1030,30-Mar-2024,AC Repair,202,175.90,Cancelled
+5027,1001,2024-04-02,Furnace Repair,203,312.60,Completed
+5028,1004,04/05/2024,Emergency Repair,201,455.00,Completed
+5029,1009,2024-04-09,AC Repair,204,199.99,Completed
+5030,1016,2024-04-12,Duct Cleaning,202,260.50,Completed
+5031,9998,2024-04-15,AC Repair,201,215.00,Completed
+5032,1019,04/18/2024,Maintenance Plan Visit,203,0.00,Completed
+5033,1025,2024-04-22,AC Install,201,3298.75,Completed
+5034,1026,25-Apr-2024,Thermostat Repair,204,92.50,Completed
+5035,1002,2024-04-29,AC Repair,202,188.60,Completed
