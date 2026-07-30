@@ -1,4 +1,3 @@
-
 # CoolAir AI Analytics Platform
 
 ### Data Platform + Hybrid RAG/SQL Question Answering System
@@ -28,19 +27,19 @@ intelligent routing between the two.
 ## Project Architecture
 
 ```
-data/*.csv ──► scripts/01_data_audit.py ──► scripts/02_data_cleaning.py ──► cleaned_data/*.csv
+data/*.csv ──► app/audit/data_audit.py ──► app/cleaning/data_cleaning.py ──► cleaned_data/*.csv
                                                                                     │
                                                                                     ▼
-                                        scripts/03_database_setup.py ──► database/coolair.db
-                                        scripts/04_load_database.py ──►      │
+                                        app/database/database_setup.py ──► database/coolair.db
+                                        app/database/load_sqlite.py ──►      │
                                                                               ├──► Power BI
                                                                               │
-documents/*.docx ──► scripts/05_build_vectorstore.py ──► database/policy_index.faiss
+documents/*.docx ──► app/rag/build_vector_store.py ──► database/policy_index.faiss
                                                                               │
-Question ──► app/chatbot.py ──► scripts/07_router.py (SQL / RAG / BOTH) ──► ┤
+Question ──► app/chatbot/chatbot.py ──► app/router/router.py (SQL / RAG / BOTH) ──► ┤
                                         │                                    │
-                                        ├──► scripts/06_sql_agent.py ────────┤
-                                        └──► app/retriever.py ───────────────┘
+                                        ├──► app/sql/sql_agent.py ────────────┤
+                                        └──► app/rag/retriever.py ───────────────┘
                                                                               │
                                                                               ▼
                                                                            Answer
@@ -54,42 +53,57 @@ This is the actual, tested layout — not an idealized one. Every command in
 this README runs against exactly this structure.
 
 ```
-coolair-ai-poc/
+CoolAir-AI-Analytics/
 │
 ├── app/
-│   ├── chatbot.py
-│   ├── retriever.py
+│   ├── api.py
+│   ├── chainlit_app.py
+│   │
+│   ├── audit/
+│   │   └── data_audit.py
+│   │
+│   ├── cleaning/
+│   │   └── data_cleaning.py
+│   │
+│   ├── database/
+│   │   ├── database_setup.py
+│   │   └── load_sqlite.py
+│   │
+│   ├── rag/
+│   │   ├── build_vector_store.py
+│   │   └── retriever.py
+│   │
+│   ├── router/
+│   │   └── router.py
+│   │
+│   ├── sql/
+│   │   └── sql_agent.py
+│   │
+│   ├── chatbot/
+│   │   └── chatbot.py
+│   │
 │   └── utils/
 │       └── config.py
 │
-├── scripts/
-│   ├── 01_data_audit.py
-│   ├── 02_data_cleaning.py
-│   ├── 03_database_setup.py
-│   ├── 04_load_database.py
-│   ├── 05_build_vectorstore.py
-│   ├── 06_sql_agent.py
-│   ├── 07_router.py
-│   └── 08_api.py
-│
 ├── data/                  ← raw CSVs
-├── cleaned_data/           ← output of 02_data_cleaning.py
+├── cleaned_data/           ← output of app/cleaning/data_cleaning.py
 ├── documents/              ← policy docx files
 ├── schema/schema.sql        ← original legacy schema (kept for reference)
-├── database/                ← coolair.db, policy_index.faiss
-├── logs/                    ← audit/cleaning reports, routing_log.jsonl
-├── dashboard/                ← Power BI file
+├── database/                ← coolair.db, policy_chunks.json, policy_index.faiss
+├── logs/                    ← audit/cleaning reports
+├── powerbi/
+│   ├── CoolAir_AI_Analytics_Dashboard.pbix
+│   └── screenshots/dashboard_overview.png
 │
 ├── requirements.txt
 ├── .env.example
 └── README.md
 ```
 
-Note on filenames: scripts under `scripts/` are numbered (`01_...py`) so
-they can't be imported with a plain `import` statement (Python identifiers
-can't start with a digit). `app/chatbot.py` and `scripts/08_api.py` load
-them via `importlib.util` from their file path instead — see the
-`_load_sibling_script` / `_load_module` helper at the top of those files.
+All modules import as a proper Python package (`from app.utils.config import ...`,
+`from app.router.router import Router`, etc.), so the project root must be
+on `PYTHONPATH` when running anything under `app/` — see the run commands
+below.
 
 ---
 
@@ -102,8 +116,9 @@ them via `importlib.util` from their file path instead — see the
 | Database        | SQLite (via SQLAlchemy)                                                  |
 | Vector Database | FAISS                                                                    |
 | Embeddings      | Sentence Transformers (`all-MiniLM-L6-v2`, local — no API key needed) |
-| LLM             | OpenAI GPT (configurable via`.env`)                                    |
+| LLM             | Groq (configurable via`.env` — `GROQ_API_KEY`, `LLM_MODEL`)       |
 | SQL Safety      | sqlglot (AST validation) + read-only DB connection                       |
+| UI              | Chainlit                                                                 |
 | Dashboard       | Power BI                                                                 |
 | Data Processing | Pandas                                                                   |
 
@@ -113,37 +128,49 @@ them via `importlib.util` from their file path instead — see the
 
 ```bash
 git clone <repository-url>
-cd coolair-ai-poc
+cd CoolAir-AI-Analytics
 
 python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 
-cp .env.example .env   # fill in OPENAI_API_KEY (or ANTHROPIC_API_KEY)
+cp .env.example .env   # fill in GROQ_API_KEY
 ```
 
 ---
 
 ## Running the pipeline (in order)
 
-```bash
-cd scripts
+Run every command from the project root with `PYTHONPATH=.` set, since
+everything under `app/` imports as a proper package
+(`from app.utils.config import ...`).
 
-python 01_data_audit.py        # -> logs/data_audit_report.md
-python 02_data_cleaning.py     # -> cleaned_data/*.csv, logs/data_cleaning_report.md
-python 03_database_setup.py    # -> database/coolair.db
-python 04_load_database.py     # loads + verifies row counts and FK integrity
-python 05_build_vectorstore.py # -> database/policy_index.faiss (needs internet, downloads the embedding model)
-python 06_sql_agent.py         # standalone safety-layer self-test — no API key needed
-python 07_router.py            # standalone routing self-test — no API key needed
+```bash
+PYTHONPATH=. python app/audit/data_audit.py         # -> logs/data_audit_report.md
+PYTHONPATH=. python app/cleaning/data_cleaning.py   # -> cleaned_data/*.csv, logs/data_cleaning_report.md
+PYTHONPATH=. python app/database/database_setup.py  # -> database/coolair.db
+PYTHONPATH=. python app/database/load_sqlite.py     # loads + verifies row counts and FK integrity
+PYTHONPATH=. python app/rag/build_vector_store.py   # -> database/policy_index.faiss (needs internet, downloads the embedding model)
+PYTHONPATH=. python app/sql/sql_agent.py            # standalone safety-layer self-test — no API key needed
+PYTHONPATH=. python app/router/router.py            # standalone routing self-test — no API key needed
 ```
+
+> ⚠️ The FAISS index (`database/policy_index.faiss`) is required for
+> document retrieval. If the index is not present after cloning the
+> repository, build it using:
+>
+> ```bash
+> PYTHONPATH=. python app/rag/build_vector_store.py
+> ```
 
 Then either:
 
 ```bash
-cd ..
-python -m app.chatbot                            # interactive CLI
-uvicorn scripts.08_api:app --reload --app-dir .  # REST API on :8000
+# FastAPI
+PYTHONPATH=. uvicorn app.api:app --reload
+
+# Chainlit UI
+PYTHONPATH=. chainlit run app/chainlit_app.py -w
 ```
 
 Swagger UI once the API is running: `http://127.0.0.1:8000/docs`
@@ -188,7 +215,7 @@ part of its own self-verification.)
 Every service order in this dataset predates June 1, 2025 — so a question
 about a specific historical order must still resolve to the v1 rate even
 though v2 is the current policy. Each indexed chunk carries `version`,
-`priority`, and `effective_date` metadata (see `05_build_vectorstore.py`)
+`priority`, and `effective_date` metadata (see `app/rag/build_vector_store.py`)
 so retrieval can apply the correct source instead of assuming "the newer
 document always wins."
 
@@ -196,7 +223,7 @@ document always wins."
 
 ## SQL agent safety
 
-Two independent layers, both required — see `scripts/06_sql_agent.py`:
+Two independent layers, both required — see `app/sql/sql_agent.py`:
 
 1. **AST-level validation** (`sqlglot`) walks the *entire* parse tree, not
    just the top-level statement type. This matters: a destructive statement
@@ -206,14 +233,14 @@ Two independent layers, both required — see `scripts/06_sql_agent.py`:
 2. **Read-only SQLite connection** (`file:...?mode=ro`) at the OS level, so
    even a query that somehow bypassed the parser is physically unable to write.
 
-Run `python scripts/06_sql_agent.py` directly — it self-tests both layers
+Run `PYTHONPATH=. python app/sql/sql_agent.py` directly — it self-tests both layers
 against 8 cases, including the CTE example above, with no API key required.
 
 ---
 
 ## Router
 
-Deterministic keyword+weight scoring (`scripts/07_router.py`) decides
+Deterministic keyword+weight scoring (`app/router/router.py`) decides
 SQL vs. RAG vs. BOTH for unambiguous questions with no LLM call. The LLM
 classifier fallback fires only when there's a genuine competing signal —
 both a SQL-side term and a doc-side term present and close in weight — or
@@ -221,7 +248,7 @@ when neither side matched anything. A zero on either side is never treated
 as ambiguous, regardless of the other side's magnitude. Every decision is
 logged to `logs/routing_log.jsonl` with the scores and reasoning.
 
-Run `python scripts/07_router.py` for the self-test (also runs with no API key).
+Run `PYTHONPATH=. python app/router/router.py` for the self-test (also runs with no API key).
 
 ---
 
@@ -229,7 +256,7 @@ Run `python scripts/07_router.py` for the self-test (also runs with no API key).
 
 For questions like "top customers" that don't specify a metric, the bot
 states its assumption in the response instead of silently picking one
-(`app/chatbot.py`, `_flag_ambiguous_ranking`) — per the assignment's
+(`app/chatbot/chatbot.py`, `_flag_ambiguous_ranking`) — per the assignment's
 requirement not to guess quietly on interpretation-dependent questions.
 
 ---
@@ -240,13 +267,6 @@ requirement not to guess quietly on interpretation-dependent questions.
 
 ```
 GET /health
-```
-
-### Route Only (no answer generation — works with no API key for unambiguous questions)
-
-```
-POST /route
-{"question": "What is the emergency diagnostic fee?"}
 ```
 
 ### Ask (full pipeline)
@@ -301,13 +321,17 @@ loading `cleaned_data/*.csv` directly if the driver isn't available).
 Minimum visuals: revenue over time, revenue/job count by service type,
 and technician performance.
 
+![CoolAir Dashboard](powerbi/screenshots/dashboard_overview.png)
+
+The `.pbix` file itself is in `powerbi/CoolAir_AI_Analytics_Dashboard.pbix`.
+
 ---
 
 ## What still needs your API key
 
-- `natural_language_to_sql()` in `scripts/06_sql_agent.py`
-- `generate_answer()`'s LLM call in `app/retriever.py`
-- `llm_classify_structured()` in `scripts/07_router.py`
+- `natural_language_to_sql()` in `app/sql/sql_agent.py`
+- `generate_answer()`'s LLM call in `app/rag/retriever.py`
+- `llm_classify_structured()` in `app/router/router.py`
 
 Each raises a clear `NotImplementedError` with a commented example call,
 rather than failing silently, until a key is set in `.env`.
@@ -316,7 +340,7 @@ rather than failing silently, until a key is set in `.env`.
 
 ## Known limitations
 
-- `05_build_vectorstore.py` needs internet access on first run to download
+- `app/rag/build_vector_store.py` needs internet access on first run to download
   the embedding model.
 - The Power BI dashboard must be built on a machine with the SQLite ODBC
   driver (or via CSV export) — not producible in a headless environment.

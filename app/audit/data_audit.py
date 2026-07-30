@@ -19,8 +19,7 @@ import chardet
 import pandas as pd
 from pathlib import Path
 
-DATA_DIR = Path(__file__).resolve().parent.parent / "data"
-
+DATA_DIR = Path(__file__).resolve().parents[2] / "data"
 # ---------------------------------------------------------------------------
 # Config — the only place dataset-specific vocabulary lives
 # ---------------------------------------------------------------------------
@@ -520,7 +519,7 @@ def main():
         "See 02_data_cleaning.py for the transformation applied to each item.")
 
     # write report to file
-    report_path = Path(__file__).resolve().parent.parent / "logs" / "data_audit_report.md"
+    report_path = Path(__file__).resolve().parents[2] / "logs" / "data_audit_report.md"
     report_path.parent.mkdir(exist_ok=True)
     report_path.write_text("\n".join(REPORT_LINES), encoding="utf-8")
     print(f"\n\nFull report written to {report_path}")

@@ -1,7 +1,7 @@
 """
 CoolAir Comfort Services — Retriever
 ========================================
-Loads the FAISS index built by scripts/05_build_vectorstore.py and answers
+Loads the FAISS index built by app/rag/build_vector_store.py and answers
 document-grounded questions with source attribution.
 
 Two responsibilities, kept separate:
@@ -64,13 +64,13 @@ class Retriever:
     def load(self):
         """
         Loads the embedding model and the prebuilt FAISS index + chunk
-        metadata. Requires scripts/05_build_vectorstore.py to have been run
+        metadata. Requires app/rag/build_vector_store.py to have been run
         first (needs network access for the embedding model download).
         """
         if not self.index_path.exists() or not self.chunks_path.exists():
             raise FileNotFoundError(
                 f"Vector index not found at {self.index_path}. "
-                f"Run scripts/05_build_vectorstore.py first."
+                f"Run app/rag/build_vector_store.py first."
             )
 
         import faiss
@@ -180,7 +180,7 @@ class Retriever:
 
 if __name__ == "__main__":
     # Retrieval-only smoke test (still needs the index built + network for
-    # the embedding model — see scripts/05_build_vectorstore.py). Uncomment
+    # the embedding model — see app/rag/build_vector_store.py). Uncomment
     # to run once you have internet access:
     #
     # r = Retriever().load()
@@ -201,5 +201,5 @@ if __name__ == "__main__":
     print(
         "Retriever module loaded successfully. Uncomment the block above "
         "to run a live retrieval or RAG test once "
-        "scripts/05_build_vectorstore.py has been run."
+        "app/rag/build_vector_store.py has been run."
     )

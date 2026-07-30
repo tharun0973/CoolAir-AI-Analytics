@@ -39,6 +39,7 @@ SQL_KEYWORDS = {
     "cancelled",
 }
 
+
 RAG_KEYWORDS = {
     "policy",
     "pricing",
@@ -71,21 +72,43 @@ class Router:
 
     @staticmethod
     def calculate_scores(question: str):
-        sql_score = sum(1 for word in SQL_KEYWORDS if word in question)
-        rag_score = sum(1 for word in RAG_KEYWORDS if word in question)
+        """
+        Calculate routing scores using exact word matching.
+
+        Prevents false matches:
+        Example:
+        "topic" should not match SQL keyword "top".
+        """
+
+        words = set(question.split())
+
+        sql_score = sum(
+            1 for word in SQL_KEYWORDS
+            if word in words
+        )
+
+        rag_score = sum(
+            1 for word in RAG_KEYWORDS
+            if word in words
+        )
+
         return sql_score, rag_score
 
     def route(self, question: str) -> dict:
+
         question = self.normalize(question)
 
         sql_score, rag_score = self.calculate_scores(question)
 
         if sql_score > 0 and rag_score > 0:
             route = RouteType.HYBRID
+
         elif sql_score > 0:
             route = RouteType.SQL
+
         elif rag_score > 0:
             route = RouteType.RAG
+
         else:
             route = RouteType.RAG
 
@@ -97,6 +120,7 @@ class Router:
 
 
 if __name__ == "__main__":
+
     router = Router()
 
     questions = [
@@ -108,10 +132,16 @@ if __name__ == "__main__":
         "Explain the refund policy",
         "List all cancelled orders",
         "How many maintenance jobs were completed?",
+        "Summarize the topic of this document",
     ]
 
     print("=== Router Test ===\n")
 
     for q in questions:
+
         result = router.route(q)
-        print(f"{result['route'].value.upper():8} -> {q}")
+
+        print(
+            f"{result['route'].value.upper():8} -> {q}"
+            f" | SQL:{result['sql_score']} RAG:{result['rag_score']}"
+        )
